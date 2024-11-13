@@ -297,4 +297,97 @@ STAND pideNombreEmpresa()
 
 void modificaTarifa(STAND *stands, PABELLON *pabellones, int numElem)
 {
-   
+    int i, numeroPabellon;
+    
+    printf("\nIntroduce el número de pabellón a modificar la tarifa: ");
+    limpiaBuffer();
+    scanf("%d", &numeroPabellon);
+    
+    printf("Introduce la nueva tarifa: ");
+    limpiaBuffer();
+    scanf("%f", &pabellones[numeroPabellon].tarifa);
+    
+    for(i = 0; i < numElem; i++)
+    {
+        stands[i].precioTotal = pabellones[numeroPabellon].tarifa * stands[i].metros * stands[i].diasAlquiler;
+    }
+}
+
+void visualizaInformacion(STAND *stands, PABELLON *pabellones, int numElem, int numPabellon)
+{
+    int i;
+    
+    if(numElem == 0)
+    {
+        printf("\nNo hay ningún stand alquilado.\n");
+        
+    }else
+    {
+        for(i = 0; i < numElem; i++) 
+        {
+            printf("\nSTAND %d", i);
+            printf("\nNombre: %s \nPabellón: %d, Días de alquiler: %d, Metros cuadrados: %.2f, Precio total: %.2f \n", stands[i].nombreEmpresa, stands[i].numeroPabellon, stands[i].diasAlquiler, stands[i].metros, stands[i].precioTotal);
+        }
+    
+        printf("\n");
+    }
+    
+    for(i = 0; i < numPabellon; i++) 
+    {
+        printf("\nPABELLÓN %d", i);
+        printf("\nTarifa: %.2f, Metros alquilados: %.2f \n", pabellones[i].tarifa, pabellones[i].metrosAlquilados);
+    }
+    
+    printf("\n");
+}
+
+void leeCadena(char *mensaje, char *cadena, int tam)
+{
+    printf("%s", mensaje);
+    limpiaBuffer();
+    fgets(cadena, tam, stdin);
+    eliminaEnter(cadena);
+}
+
+void limpiaBuffer()
+{
+    __fpurge(stdin);
+}
+
+void eliminaEnter(char *cadena)
+{
+    if(cadena[strlen(cadena) - 1] == '\n')
+    {
+        cadena[strlen(cadena) - 1] = '\0';
+    }
+}
+
+int busquedaBinaria(STAND *array, STAND elemento, int numElem)
+{
+    int izquierda = 0, medio, derecha = numElem - 1, encontrado = 0;
+    
+    medio = (izquierda + derecha) / 2;
+    
+    while((izquierda < derecha) && (!encontrado))
+    {
+        if(strcmp(array[medio].nombreEmpresa, elemento.nombreEmpresa) == 0)
+        {
+            encontrado = 1;
+            
+        }else 
+        {
+            if(strcmp(array[medio].nombreEmpresa, elemento.nombreEmpresa) < 0)
+            {
+                izquierda = medio + 1;
+                
+            }else 
+            {
+                derecha = medio - 1;
+            }
+        
+            medio = (izquierda + derecha) / 2;
+        }
+    }
+    
+    return medio;
+}
