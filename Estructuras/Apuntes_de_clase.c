@@ -217,13 +217,75 @@ Intenta crear un fichero con un editor binario o en otro programa y procesarlo c
 
 
 
+Apuntes: Gestión de Ficheros
+Estos son los apuntes organizados sobre la gestión de ficheros binarios que contienen información bidimensional de tipo unsigned char. El programa maneja dos tipos de ficheros y un menú interactivo.
+
+Tipos de Ficheros
+Tipo 1: Fichero de Listado (listado.dat)
+Descripción:
+Este fichero contiene el listado de los ficheros de tipo 2 que se desean gestionar.
+
+Formato:
+
+Cabecera:
+Un entero (int) que almacena el número de elementos en el listado.
+Datos:
+Cada elemento contiene:
+nomFich: Cadena de caracteres (máximo 20 caracteres) que contiene el nombre del fichero.
+codigo: Cadena de caracteres (máximo 12 caracteres) que contiene el código de acceso asociado al fichero.
+Tipo 2: Ficheros de Datos
+Descripción:
+Estos ficheros contienen información bidimensional de datos de tipo unsigned char.
+
+Formato:
+
+Cabecera:
+Una estructura con:
+
+filas: Número de filas (int).
+columnas: Número de columnas (int).
+codigo: Código de acceso (char[12]).
+Datos:
+Los datos son de tipo unsigned char y están almacenados fila por fila.
+
+Menú del Programa
+Salir del Programa
+
+Finaliza la ejecución.
+Insertar Fichero
+
+Inserta el nombre y el código de acceso de un fichero de tipo 2 en listado.dat.
+Eliminar Fichero
+
+Elimina un elemento del fichero listado.dat.
+Comprobar Listado
+
+Verifica que todos los ficheros del listado existen y que sus códigos de acceso coinciden con los de las cabeceras de los ficheros de tipo 2.
+Ejemplo de Ejercicio
+Ejercicio 1: Gestión de Listado y Datos
+Codifica un programa que permita la gestión de ficheros binarios con información bidimensional de tipo unsigned char. El programa manejará dos tipos de ficheros descritos anteriormente (tipo 1 y tipo 2) a través del menú interactivo.
+
+Ejercicio 2: Filtrado de Censo
+Dado un fichero que contiene el censo de la población bilbaína, escribe un programa que:
+
+Cree un nuevo fichero con la información de las personas mayores de 60 años o que los cumplan en el año actual.
+El fichero original no debe ser modificado.
+Calcule el porcentaje de estas personas respecto al total de la población.
+Formato del Fichero de Censo
+Cada registro contiene:
+
+nombre: Cadena de caracteres.
+apellido1: Cadena de caracteres.
+apellido2: Cadena de caracteres.
+anioNacimiento: Año de nacimiento (int).
+direccion: Cadena de caracteres.
+Con esta estructura, los apuntes deberían ser más claros, organizados y fáciles de usar como referencia. Si aún hay algo que mejorar, avísame y ajusto lo necesario.
 
 
 
 
 
-
-
+EJEMPLO DE EJERCICIO 1.
 
 
 
@@ -252,6 +314,8 @@ b) a partir del segundo, cada elemetno del fichero almacena lpos datos de tipo u
 2 eliminar fichero
 3 comrpbar listado
 
+EJEMPO DE EJERCICIO 2.
+
 opcion 1 inserta el nombre y el codigo de acceso de un fichero de datos de tipo unsigned char en el fichero "listado.dat" se introducira por teclado el nombre del fichero a insertar en el listado. si el fichero existe se pedira la introduccion por teclado del codigo de acceso al fichero. si el codigo de acceso es correcto y el fichero no esta en el listado, su informacion sera convenientemente almacenada en el fichero "listado.dat"
 en caso de que no pueda ser insertado en el listado se visualizara la razon en pantalla
 
@@ -262,10 +326,16 @@ en caso de que no pueda ser insertado en el listado se visualizara la razon en p
 
   opcion 3 comprobara que todos los ficheros del listaod existen y que sus codifos de acceso son los mismos que los que figuran en la cabecera de los ficheros de tipo 2. para todo fichero que no exista o su codigo de acceso no sea el mismo que el que figura en la cabecera del fichero, el elemento correspondiente debe ser eliminado del listado, visualizando en pantalla la razon de su eliminacion:
 
-
+EJEMPLO DE EJERCICIO 3.
 
 dado un fichero conteniendo el censo de la poblacion bilbaina, se pide escribir un programa que cree un fichero que contenga la informacion referente a las personas con mas de 60 años o que los complan dentro del año actual(dicha informacion no debera borrarse del fichero original).
 
 El programa debera ademas calcular el porcentaje que sonen estas personas respecto al del total del censo.
 
   el tipo de elemetnos que contiene el fichero del censo es, por cada ciudadano, un registro con los siguientes datos: nombre, dos apellidos, año de nacimiento y direccion.
+
+    programa cReaCenos60;
+creaFichero2, nomFich1, nomFich2.
+
+    visualizafichero, nomFich,
+    visualizaFicha, ficha
