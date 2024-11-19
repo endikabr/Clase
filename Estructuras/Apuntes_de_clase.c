@@ -263,13 +263,15 @@ Comprobar Listado
 Verifica que todos los ficheros del listado existen y que sus códigos de acceso coinciden con los de las cabeceras de los ficheros de tipo 2.
 Ejemplo de Ejercicio
 Ejercicio 1: Gestión de Listado y Datos
-Codifica un programa que permita la gestión de ficheros binarios con información bidimensional de tipo unsigned char. El programa manejará dos tipos de ficheros descritos anteriormente (tipo 1 y tipo 2) a través del menú interactivo.
+Codifica un programa que permita la gestión de ficheros binarios con información bidimensional de tipo unsigned char. El programa manejará dos 
+tipos de ficheros descritos anteriormente (tipo 1 y tipo 2) a través del menú interactivo.
 
 Ejercicio 2: Filtrado de Censo
 Dado un fichero que contiene el censo de la población bilbaína, escribe un programa que:
 
 Cree un nuevo fichero con la información de las personas mayores de 60 años o que los cumplan en el año actual.
 El fichero original no debe ser modificado.
+    
 Calcule el porcentaje de estas personas respecto al total de la población.
 Formato del Fichero de Censo
 Cada registro contiene:
@@ -285,57 +287,81 @@ Con esta estructura, los apuntes deberían ser más claros, organizados y fácil
 
 
 
-EJEMPLO DE EJERCICIO 1.
+EJEMPLO DE EJERCICIO 1
+Codificar un programa que permita la gestión de ficheros con información bidimensional de datos tipo unsigned char.
+
+Para ello se dispone de dos tipos de ficheros binarios de datos:
+
+Tipo 1
+De este tipo hay un solo fichero.
+El contenido de este fichero es el listado de ficheros de tipo 2 a gestionar.
+Los de tipo 2 tienen el siguiente formato:
+Primer elemento del fichero: Un dato de tipo int que almacena el número de elementos.
+A partir del segundo elemento: Cada elemento del fichero contiene la siguiente información:
+nomfich: Cadena de caracteres de máximo 20 elementos.
+codigo: ?????
+Tipo 2
+De este tipo hay tantos ficheros como se deseen gestionar.
+Cada fichero contiene información bidimensional de datos de tipo unsigned char.
+Formato del fichero tipo 2:
+
+a) El primer elemento del fichero es una estructura con la siguiente información:
+
+filas: Dato de tipo int que indica el número de filas.
+columnas: Dato de tipo int que indica el número de columnas.
+codigo: Cadena de caracteres de máximo 12 elementos, que contiene el código de acceso al fichero.
+b) A partir del segundo elemento, cada elemento del fichero almacena datos de tipo unsigned char.
+
+Esta información está almacenada por filas.
+El programa se ejecutará rápidamente en torno a un menú con las siguientes opciones:
+
+Salir del programa.
+Insertar fichero.
+Eliminar fichero.
+Comprobar listado.
+EJEMPLO DE EJERCICIO 2
+Opción 1: Insertar fichero
+Se introduce el nombre y el código de acceso de un fichero de datos de tipo unsigned char en el fichero listado.dat.
+
+Se pedirá por teclado el nombre del fichero a insertar en el listado.
+Si el fichero existe, se solicitará la introducción por teclado del código de acceso al fichero.
+Si el código de acceso es correcto y el fichero no está en el listado, su información será almacenada en el fichero listado.dat.
+En caso de que no pueda ser insertado en el listado, se mostrará en pantalla la razón.
+Nota del profesor: Para esto se debe realizar volcados, búsquedas binarias, y otros procesos adicionales.
+
+Opción 2: Eliminar fichero
+Elimina del fichero listado.dat el elemento que contiene el nombre y el código de acceso de un fichero de datos de tipo unsigned char.
+
+Se pedirá por teclado el nombre del fichero a eliminar del listado.
+Si el fichero está en el listado, se solicitará el código de acceso al fichero.
+Si el código de acceso coincide con el que figura en el listado, el elemento correspondiente será eliminado.
+En caso de que no pueda ser eliminado, se visualizará en pantalla la razón.
+Opción 3: Comprobar listado
+Comprueba que todos los ficheros del listado existen y que sus códigos de acceso coinciden con los que figuran en la cabecera de los ficheros de tipo 2.
+
+Para todo fichero que no exista o cuyo código de acceso no sea el mismo que el registrado, el elemento correspondiente será eliminado del listado.
+La razón de su eliminación se mostrará en pantalla.
+EJEMPLO DE EJERCICIO 3
+Dado un fichero que contiene el censo de la población bilbaína, se pide escribir un programa que cree un fichero que contenga la información referente a las personas con más de 60 años o que los cumplan dentro del año actual.
+
+La información no deberá borrarse del fichero original.
+El programa deberá calcular el porcentaje que representan estas personas respecto al total del censo.
+Formato del fichero del censo:
+Cada registro contiene los siguientes datos:
+
+nombre: Nombre del ciudadano.
+dos apellidos: Apellidos del ciudadano.
+año de nacimiento: Año en que nació el ciudadano.
+direccion: Dirección del ciudadano.
+Funciones del programa:
+
+programa cReaCenos60: Programa principal.
+creaFichero2(nomFich1, nomFich2): Crea un nuevo fichero con los datos filtrados.
+visualizaFichero(nomFich): Muestra el contenido de un fichero.
+visualizaFicha(ficha): Muestra los datos de una ficha individual.
 
 
 
-codificar un profrana que permita la gestion de ficheros con informacion bidimensional de datos tipo unsigned char. para ello se dispone de dos tipos de ficheros binarios de datos
-
-tipo 1: de este tipo hay un solo fichero, el contenido de este fichero es el listado de ficheros de tipo 2 a gestionar. los de tipo 2 tienen este formato
-
-el primer elemento del fichero es de tipo int que almacena el numero de elementos.
 
 
 
-a partir de el segundo cada elemento del fichero contiene la siguiente informacion, nomfich= cadena de caracteres como maximo 20, codigo = ?????
-
-  tipo 2 de este tipo hay tantos ficheros como se deseen gestionar. cada uno contiene ingormacion biodimensional de datos de tipo unsigned char. a) el primer elemento del fichero es una estructura con la siguiente informacion:
-filas: datos de tipo int que indica el numero de filas.
-  columnas: datos de tipo int que indica el numero de columnas.
-
-  codigo: cadena de caracteres de como maximo 12 elementos, que contienen codigo de acceso al fichero
-
-b) a partir del segundo, cada elemetno del fichero almacena lpos datos de tipo unsigned char. esta informacion esta almacenada por filas
-
-
-////el programa se ejecutara rapidamente en torno a un menu con las siguientes opciones
-0 salir del programa
-1 insertar fichero
-2 eliminar fichero
-3 comrpbar listado
-
-EJEMPO DE EJERCICIO 2.
-
-opcion 1 inserta el nombre y el codigo de acceso de un fichero de datos de tipo unsigned char en el fichero "listado.dat" se introducira por teclado el nombre del fichero a insertar en el listado. si el fichero existe se pedira la introduccion por teclado del codigo de acceso al fichero. si el codigo de acceso es correcto y el fichero no esta en el listado, su informacion sera convenientemente almacenada en el fichero "listado.dat"
-en caso de que no pueda ser insertado en el listado se visualizara la razon en pantalla
-
-***para esto esta hablando el profesor de que hay que volcar hacer busquedas binarias y no se que mas**
-
-
-  opcion 2 elimina del fichero "listado.dat" el elmento que contiene el nombre y el codigo de acceso de un fichero de datos de tipo unsigned char. se intorducira por teclado el nombre del fichero a eliminar del listado. si el fichero se encuentra en el listado, se pedira la introduccion por teclado del codigo de acesoal fichero. si el codigo de acceso es el mismo que el que figura en el listado, el elemento correspondiente sera eliminado del listado. en caso de que no pueda ser eliminado del listado, se visualizara la razon en pantalla.
-
-  opcion 3 comprobara que todos los ficheros del listaod existen y que sus codifos de acceso son los mismos que los que figuran en la cabecera de los ficheros de tipo 2. para todo fichero que no exista o su codigo de acceso no sea el mismo que el que figura en la cabecera del fichero, el elemento correspondiente debe ser eliminado del listado, visualizando en pantalla la razon de su eliminacion:
-
-EJEMPLO DE EJERCICIO 3.
-
-dado un fichero conteniendo el censo de la poblacion bilbaina, se pide escribir un programa que cree un fichero que contenga la informacion referente a las personas con mas de 60 años o que los complan dentro del año actual(dicha informacion no debera borrarse del fichero original).
-
-El programa debera ademas calcular el porcentaje que sonen estas personas respecto al del total del censo.
-
-  el tipo de elemetnos que contiene el fichero del censo es, por cada ciudadano, un registro con los siguientes datos: nombre, dos apellidos, año de nacimiento y direccion.
-
-    programa cReaCenos60;
-creaFichero2, nomFich1, nomFich2.
-
-    visualizafichero, nomFich,
-    visualizaFicha, ficha
