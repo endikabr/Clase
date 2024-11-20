@@ -23,11 +23,11 @@ void crearFichero(const char *nombreFichero) {
     // Datos de los empleados
     Empleado empleados[] = {
         {1, "Ana Pérez", 2500.50},
-        {3, "Luis Gómez", 3200.00},
-        {5, "Marta Sánchez", 4000.75},
-        {7, "Carlos Ruiz", 2800.00},
-        {8, "Lucía Fernández", 3100.25},
-        {10, "Jorge Ramírez", 4500.00}
+        {2, "Luis Gómez", 3200.00},
+        {3, "Marta Sánchez", 4000.75},
+        {4, "Carlos Ruiz", 2800.00},
+        {5, "Lucía Fernández", 3100.25},
+        {6, "Jorge Ramírez", 4500.00}
     };
 
     // Escribimos el número de elementos (cabecera)

@@ -2,17 +2,20 @@
 #include <stdlib.h>
 
 int main() {
+
     // Función para insertar una ficha en el fichero
     insertaFicha(nomFich /*entrada*/) {
 
-        // Volcar el contenido del fichero a un array en memoria
-        vuelcaFicheroAArray(nomFich /*entrada*/, array /*entrada*/, numElem /*entradaYsalida*/);
+unsigned char array, numElem, elementosEnElArray;
+
+        // Reservar memoria dinámica para el array según el número de elementos
+        reservaMemoria(numElem /*entrada*/, array /*salida*/);
 
         // Averiguar el número de elementos en el fichero
         averiguaNumElem(nomFich /*entrada*/, numElem /*salida*/);
 
-        // Reservar memoria dinámica para el array según el número de elementos
-        reservaMemoria(numElem /*entrada*/, array /*salida*/);
+        // Volcar el contenido del fichero a un array en memoria
+        vuelcaFicheroAArray(nomFich /*entrada*/, array /*entrada*/, numElem /*entradaYsalida*/);
 
         // Insertar un nuevo elemento en el array
         insertaElemento(array /*entrada*/, numElem /*entradaYsalida*/) {
