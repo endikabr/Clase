@@ -9,6 +9,8 @@ typedef struct {
     float salario;
 } EMPLEADO;
 
+//esto es un programa de chat gpt
+
 int averiguaNumElem(char *nomFich);
 EMPLEADO *reservaMemoriaEmpleado(int numElem);
 int vuelcaFicheroAArray(char *nomFich, EMPLEADO *array, int numElem);
