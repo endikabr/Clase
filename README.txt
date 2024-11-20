@@ -7,4 +7,4 @@ para actualizar el repositorio de github desde visualcode:
 3. git add .
 4. git commit -m "comentario"
 5. git push.
-6.
+6. a funcionaaaar
