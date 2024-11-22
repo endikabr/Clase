@@ -20,7 +20,7 @@ mayoresXanos("censo.dat");
 
 void mayoresXanos(const char *nomFich){
 int anoEdad = 2024 - 30;
-    FILE *f = fopen(nomfich, "rb");
+    FILE *f = fopen(nomFich, "rb");
     if(f == NULL){
         printf("\nError al abrir el fichero");
     }
