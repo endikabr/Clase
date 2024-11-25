@@ -19,13 +19,27 @@ mayoresXanos("censo.dat");
 }
 
 void mayoresXanos(const char *nomFich){
-int anoEdad = 2024 - 30;
+
+int anoActual = 2024;
+int edad, j; 
+int anoNacimiento = anoActual - edad;
+CENS censo;
+
     FILE *f = fopen(nomFich, "rb");
     if(f == NULL){
         printf("\nError al abrir el fichero");
     }
-    
-    fread()
 
+    printf("\nIntroduce la edad: ");
+scanf("%d", &edad);
+    fread(censo, sizeof(CENS), TAMANOCENSO, f);
+printf("Estas son las perosnas mayores de %d años.", edad);
+for(int i = 0; i < TAMANOCENSO; i++){
+if (censo[i].ano < anoNacimiento )
+{
+    printf("%s %s %d", censo[i].nombre cenos[i].apellidos censo[i].edad);
+    j++;
+}
+}
 fclose(f);
 }
