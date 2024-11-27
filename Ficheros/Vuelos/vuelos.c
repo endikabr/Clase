@@ -94,10 +94,7 @@ void vuelcaFicheroAArray(const char* nomFich, DATOS *vuelos, int numElem) {
 
 // Función para limpiar el búfer de entrada
 void limpiarBuffer() {
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF) {
-        // Consume caracteres hasta vaciar el búfer
-    }
+    __fpurge(stdin);
 }
 
 // Función para eliminar el salto de línea de una cadena
