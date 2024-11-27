@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <string.h>
-#define MAXCHAR
-#define MAXELEM
-#define RELOJ 
+#define MAXCHAR 30
+#define MAXELEM 40
+#define RELOJ 7
 
 typedef struct {
 
 int numero_vuelo;
-char destino[MAXTCHAR];
+char destino[MAXCHAR];
 char horario_salida[RELOJ];
 int numero_plazas_libres;
 
@@ -15,13 +15,13 @@ int numero_plazas_libres;
 
 int averiguaNumeElem(const char* nomFich);
 void insertaElementoEnFichero(const char* nomFich);
-void vuelcaFicheroAArray(const chat* nomFich, DATOS vuelos[MAXELEM]);
+void vuelcaFicheroAArray(const char* nomFich, DATOS vuelos[MAXELEM]);
 void vuelcaArrayAFichero(const char *nomFich, DATOS *array, int numElemFichero);
 int anadeFicha(DATOS *array, int numElemFichero);
 
 int main(){
 
-
+insertaElemetosEnElFichero("vuelos.dat");
     return(0);
 }
 int averiguaNumeElem(const char* nomFich){
