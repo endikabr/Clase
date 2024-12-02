@@ -12,95 +12,100 @@ typedef struct {
     int numero_plazas_libres;
 } DATOS;
 
-// Prototipos de funciones
-int averiguaNumeElem(const char* nomFich);
-void insertaElementoEnFichero(const char* nomFich);
-void vuelcaFicheroAArray(const char* nomFich, DATOS *vuelos, int numElem);
-void vuelcaArrayAFichero(const char *nomFich, DATOS *array, int numElem);
-int anadeFicha(DATOS *array, int numElem);
 void limpiarBuffer();
-void eliminarEnter(char *cadena);
+int averiguaNumElem(const char* nomFich);
+void vuelcaFichArray(const char* nomFich, DATOS *array, int *numElem);
+void vuelcaArrayFich(const char* nomFich, DATOS *array, int *numElem);
+
+void insertaFicha(const char* nomFich, DATOS *array, int *numElem);
+
 
 int main(int argc, char** argv) {
-    insertaElementoEnFichero("vuelos.dat");
+
+    int opcion;
+    do {
+        printf("\nMenu:\n"
+                "1.-\n"
+                "2.-\n"
+                "3.-\n"
+                "0.-EXIT\n");
+        limpiarBuffer();
+        scanf("%d", &opcion);
+        switch (opcion) {
+
+            case 1:
+                printf("Has Elegido la opcion 1");
+                break;
+
+            case 2:
+                printf("Has Elegido la opcion 2");
+                break;
+
+            case 3:
+                printf("Has Elegido la opcion 3");
+                break;
+
+            case 0:
+                printf("Saliendo del programa...");
+                break;
+
+            default:
+                printf("Porfavor inserta una opcion valida");
+        }
+    } while (opcion != 0);
+
     return (EXIT_SUCCESS);
 }
 
-int averiguaNumeElem(const char* nomFich) {
-    FILE *f = fopen(nomFich, "rb");
-    if (f == NULL) {
-        printf("No se pudo abrir el fichero correctamente\n");
-        return 0;
-    }
-
-    fseek(f, 0, SEEK_END); // Mover al final del archivo
-    long fileSize = ftell(f); // Obtener el tamaño del archivo
-    fclose(f);
-
-    return fileSize / sizeof(DATOS); // Número de elementos
-}
-
-void insertaElementoEnFichero(const char* nomFich) {
-    DATOS vuelos[MAXELEM];
-
-    int numElem = averiguaNumeElem(nomFich);
-    vuelcaFicheroAArray(nomFich, vuelos, numElem);
-    numElem = anadeFicha(vuelos, numElem);
-    vuelcaArrayAFichero(nomFich, vuelos, numElem);
-}
-
-void vuelcaArrayAFichero(const char *nomFich, DATOS *array, int numElem) {
-    FILE *f = fopen(nomFich, "wb");
-    if (f == NULL) {
-        printf("No se pudo abrir el fichero correctamente\n");
-        return;
-    }
-
-    fwrite(array, sizeof(DATOS), numElem, f);
-    fclose(f);
-}
-
-int anadeFicha(DATOS *array, int numElem) {
-    printf("Introduce el número de vuelo: ");
-    scanf("%d", &array[numElem].numero_vuelo);
-    limpiarBuffer(); // Limpia el búfer después de leer un número
-
-    printf("Introduce el destino del vuelo: ");
-    fgets(array[numElem].destino, MAXCHAR, stdin);
-    eliminarEnter(array[numElem].destino); // Elimina el salto de línea
-
-    printf("Introduce el horario del vuelo (HH:MM): ");
-    fgets(array[numElem].horario_salida, RELOJ, stdin);
-    eliminarEnter(array[numElem].horario_salida); // Elimina el salto de línea
-
-    printf("Introduce el número de plazas libres: ");
-    scanf("%d", &array[numElem].numero_plazas_libres);
-    limpiarBuffer(); // Limpia el búfer después de leer un número
-
-    numElem++;
-    return numElem;
-}
-
-void vuelcaFicheroAArray(const char* nomFich, DATOS *vuelos, int numElem) {
-    FILE *f = fopen(nomFich, "rb");
-    if (f == NULL) {
-        printf("No se pudo abrir el fichero correctamente\n");
-        return;
-    }
-
-    fread(vuelos, sizeof(DATOS), numElem, f);
-    fclose(f);
-}
-
-// Función para limpiar el búfer de entrada
 void limpiarBuffer() {
     __fpurge(stdin);
 }
 
-// Función para eliminar el salto de línea de una cadena
-void eliminarEnter(char *cadena) {
-    size_t len = strlen(cadena);
-    if (len > 0 && cadena[len - 1] == '\n') {
-        cadena[len - 1] = '\0';
+void vuelcaFichArray(const char* nomFich, DATOS *array, int *numElem){
+    FILE *f = fopen(nomFich, "rb");
+    if(f == NULL){
+        printf("Error al leer el fichero");
     }
+    fread(array, sizeof(DATOS), numElem, f);
+    fclose(f);
+}
+
+void vuelcaArrayFich(const char* nomFich, DATOS *array, int *numElem){
+    FILE *f = fopen(nomFich, "wb");
+    if(f == NULL){
+        printf("Error al leer el fichero");
+    }
+    fwrite(array, sizeof(DATOS), numElem, f);
+    fclose(f);    
+}
+
+void insertaElem(const char* nomFich, DATOS *array, int *numElem) {
+    if (*numElem >= MAXELEM) { // Validar si el array está lleno
+        printf("Error: No se pueden insertar más vuelos, el array está lleno.\n");
+        return;
+    }
+
+    printf("Introduce el destino del vuelo: ");
+    limpiarBuffer();
+    fgets(array[*numElem].destino, MAXCHAR, stdin);
+    array[*numElem].destino[strcspn(array[*numElem].destino, "\n")] = '\0'; // Eliminar salto de línea
+
+    printf("Introduce la hora de salida (HH:MM): ");
+    limpiarBuffer();
+    fgets(array[*numElem].horario_salida, RELOJ, stdin);
+    array[*numElem].horario_salida[strcspn(array[*numElem].horario_salida, "\n")] = '\0'; // Eliminar salto de línea
+
+    printf("Introduce la cantidad de plazas libres del avión: ");
+    limpiarBuffer();
+    scanf("%d", &array[*numElem].numero_plazas_libres); // Usar '&' para scanf
+
+    (*numElem)++; // Incrementar después de insertar los datos
+}
+
+void insertaFicha(cosnt char* nomFich, DATOS *array, int *numElem){
+    DATOS array[MAXELEM];
+    int numElem;
+    vuelcaFichArray(nomFich, *array, *numElem);
+    insertaElem(nomFich, *array, *numElem);
+    vuelcaArrayFich(nomFich, *array, *numElem);
 }
