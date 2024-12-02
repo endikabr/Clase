@@ -359,9 +359,3 @@ programa cReaCenos60: Programa principal.
 creaFichero2(nomFich1, nomFich2): Crea un nuevo fichero con los datos filtrados.
 visualizaFichero(nomFich): Muestra el contenido de un fichero.
 visualizaFicha(ficha): Muestra los datos de una ficha individual.
-
-
-
-
-
-
