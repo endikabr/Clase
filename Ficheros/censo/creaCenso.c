@@ -4,11 +4,14 @@
 #define MAXTAM 50
 
 typedef struct {
+
     char nombre[MAXTAM];
     char apellidos[MAXTAM];
     int ano; // Año de nacimiento
     char ciudad[MAXTAM];
+
 } CENS;
+
 
 void creaCenso(const char *nomFich);
 
