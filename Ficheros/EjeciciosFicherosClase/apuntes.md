@@ -71,3 +71,15 @@ liberaMemoria(){
 
 }
 
+programa de tareas, estructura fechaInicio, tarea, fecha fin.
+
+El programa funciona de manera repetitiva en torno a un menu con varias opciones a realizar sobre un fihcero que contiene un listado de tareas, el fichero contendra en su primer 
+elemento un elemento de tipo unsigned shell cho
+
+opcion 1 se pide la fecha y si no coincide con la de ningun elemento del fichero se introducira en la posicion correspondiente del fichero
+opcion 2 se pedira la fecha del un elemetno y se eliminara
+opcion 3 se pide la fecha de hoy y se actualizara el fichero borrando todos los elementos que hayan caducado
+opcion 4 mostrar datos del fichero
+
+
+
